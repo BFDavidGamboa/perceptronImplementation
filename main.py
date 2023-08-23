@@ -54,14 +54,15 @@ class Perceptron(object):
 
         rgen = np.random.RandomState(self.random_state)
         # rgene = np.random.Generator(self)
-
         # ~numpy.random.Generator.normal
         # ~numpy.random.Generator
-        self.w_ = rgen.normal(0.0, 0.01, 1 + x.shape[1])
+
+        self.w_ = rgen.normal(loc=0.0, scale=0.01, size=1 + x.shape[1])
         # self.w_ = rgene.random().Generator.normal
 
         for _ in range(self.n_iter):
             errors = 0
+            # Producto escalar de x y y
             for xi, target in zip(x, y):
                 update = self.eta * (target - self.predict(xi))
                 self.w_[1:] += update * xi
@@ -78,14 +79,16 @@ class Perceptron(object):
         """Return class label after unit step"""
         return np.where(self.net_input(x) >= 0.0, 1, -1)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+    v1 = np.array([1, 2, 3])
+    v2 = 0.5 * v1
+    print(np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))))
+# def print_hi(name):
+#     # Use a breakpoint in the code line below to debug your script.
+#     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+#
+#
+# # Press the green button in the gutter to run the script.
+# if __name__ == '__main__':
+#     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
