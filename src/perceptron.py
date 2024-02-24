@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Perceptron(object):
     """Perceptron classifier.
 
@@ -71,8 +74,3 @@ class Perceptron(object):
         """Return class label after unit step"""
         return np.where(self.net_input(x) >= 0.0, 1, -1)
 
-    v1 = np.array([1, 2, 3])
-    v2 = 0.5 * v1
-
-    # Re-read this
-    print(np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))))
